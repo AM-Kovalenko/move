@@ -42,11 +42,12 @@ class Genre(models.Model):
 
     class Meta:
         verbose_name = "Жанр"
-        verbose_name_plural = "Актеры и режиссеры"
+        verbose_name_plural = "Жанры"
 
 
 class Movie(models.Model):
     """Фильмы"""
+
     title = models.CharField("Название", max_length=100)
     tagline = models.CharField("Слоган", max_length=100, default='')
     description = models.TextField("Описание")
@@ -59,7 +60,7 @@ class Movie(models.Model):
     word_primiere = models.DateField("Премьера в мире", default=date.today)
     budget = models.PositiveIntegerField("бюджет", default=0, help_text="указывать сумму в долларах")
     fees_in_usa = models.PositiveIntegerField("Сбор в США", default=0, help_text="указывать сумму в долларах")
-    fees_in_world = models.PositiveIntegerField("Сбор в США", default=0, help_text="указывать сумму в долларах")
+    fees_in_world = models.PositiveIntegerField("Сбор в мире", default=0, help_text="указывать сумму в долларах")
     categoty = models.ForeignKey(Category, verbose_name="категория", on_delete=models.SET_NULL, null=True)
     url = models.SlugField(max_length=150, unique=True)
     draft = models.BooleanField("Черновик", default=False)
